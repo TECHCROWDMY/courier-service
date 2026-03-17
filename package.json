@@ -1,0 +1,19 @@
+{
+  "name": "courier-service",
+  "version": "1.0.0",
+  "description": "Kiki's courier service — delivery cost estimation and time calculation",
+  "main": "src/cli.js",
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js"]
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
