@@ -22,14 +22,14 @@ const OFFERS = {
     minWeight: 100,
     maxWeight: 250,
     minDistance: 50,
-    maxDistance: 250,
+    maxDistance: 150,
   },
   OFR003: {
     discountPct: 5,
     minWeight: 10,
     maxWeight: 150,
-    minDistance: 10,
-    maxDistance: 150,
+    minDistance: 50,
+    maxDistance: 250,
   },
 };
 

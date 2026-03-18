@@ -33,6 +33,11 @@ describe('OfferService', () => {
       expect(OfferService.getDiscountPct(pkg)).toBe(0);
     });
 
+    test('OFR002 - returns 0 when distance exceeds maximum (150km)', () => {
+      const pkg = new Package('PKG2', 110, 200, 'OFR002');
+      expect(OfferService.getDiscountPct(pkg)).toBe(0);
+    });
+
     test('OFR002 - returns 7 when criteria met', () => {
       const pkg = new Package('PKG4', 110, 60, 'OFR002');
       expect(OfferService.getDiscountPct(pkg)).toBe(7);
@@ -43,8 +48,13 @@ describe('OfferService', () => {
       expect(OfferService.getDiscountPct(pkg)).toBe(5);
     });
 
-    test('OFR003 - returns 0 when distance is below minimum (10km)', () => {
-      const pkg = new Package('PKG3', 10, 5, 'OFR003');
+    test('OFR003 - returns 0 when distance is below minimum (50km)', () => {
+      const pkg = new Package('PKG3', 10, 30, 'OFR003');
+      expect(OfferService.getDiscountPct(pkg)).toBe(0);
+    });
+
+    test('OFR003 - returns 0 when distance exceeds maximum (250km)', () => {
+      const pkg = new Package('PKG3', 10, 300, 'OFR003');
       expect(OfferService.getDiscountPct(pkg)).toBe(0);
     });
   });
