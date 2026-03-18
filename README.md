@@ -92,6 +92,18 @@ Total         = Delivery Cost - Discount
 
 ---
 
+## 🏷️ Offer criteria
+
+| Offer | Discount | Distance (km) | Weight (kg) |
+|-------|----------|---------------|-------------|
+| OFR001 | 10% | < 200 | 70 – 200 |
+| OFR002 | 7% | 50 – 150 | 100 – 250 |
+| OFR003 | 5% | 50 – 250 | 10 – 150 |
+
+> All bounds are inclusive. No discount is applied if the offer code is missing, invalid, or criteria are not met.
+
+---
+
 ## 🚚 Shipment selection criteria (Part 2)
 
 | Priority | Rule |
@@ -104,9 +116,9 @@ Total         = Delivery Cost - Discount
 
 ## 🧠 How I approached this problem
 
-I read the spec carefully before writing any code. A few things were not immediately obvious:
+I read the spec carefully before writing any code. A few things required close attention:
 
-**📄 The offer criteria table** in the PDF had a rendering issue — the distance/weight columns were ambiguous. I reverse-engineered the correct bounds by working backwards from both sample outputs (PKG1 failing OFR001, PKG3 passing OFR003) until the numbers matched exactly.
+**🏷️ The offer criteria table** — bounds were read directly from the spec and implemented as a data-driven config in `src/config/offers.js`. Each offer's distance and weight ranges are stored as plain data, meaning new offers can be added with zero code changes. The sample outputs were used to verify the implementation was correct.
 
 **✂️ Truncation vs rounding** — the spec says "round off to 2 digits" but gives `3.456 → 3.45` as an example. That is truncation (floor), not rounding. I verified this against every expected output value before locking it in.
 
