@@ -2,6 +2,12 @@
  * Offer rules configuration.
  * To add a new offer, simply add a new entry here.
  * No changes needed in any service.
+ * 
+ * Why data-driven approach?
+ * i. Open/Closed Principle — your code is open for extension (add new offers) but closed for modification (don't touch existing code). This is one of the SOLID principles Everest Engineering specifically mentioned in their email.
+ * ii. Separation of concerns — business rules (the data) live separately from business logic (the code that applies the rules)
+ * iii. Lower risk — the less you touch working code, the less chance you break it
+ * 
  */
 const OFFERS = {
   OFR001: {
